@@ -4,7 +4,6 @@ function login() {
     const username = document.getElementById('login-username').value;
     const password = document.getElementById('login-password').value;
     
-
     
     if (username && password) {
         
@@ -19,15 +18,17 @@ function login() {
 // regitrasi //
 
 function register() {
-    
+    const username = document.getElementById('register-username').value;
+    const password = document.getElementById('register-password').value;
+    const date = document.getElementById('birtdhay').value;
+    const useremail = document.getElementById('Email').value;
 
     
-    if (username && password && birtday) {
-    
-        localStorage.setItem(
-            'username',username
-        );
-    
+    if (username && password && date && useremail) {
+        localStorage.setItem('username', username);
+        localStorage.setItem('date', date);
+        localStorage.setItem('useremail', useremail);
+        
         window.location.href = 'main.html';
     } else {
         alert('tolong ketik yang benar');
@@ -38,20 +39,25 @@ function register() {
 
 function showProfilePage() {
     const username = localStorage.getItem('username');
-    const birtday = localStorage.getItem('birtday');
-    if (username) {
+    const date = localStorage.getItem('date');
+    const useremail = localStorage.getItem('useremail');
+    //pemanggialan data untuk di tampilkan
+    if (username && date && useremail) {
         document.getElementById('profile-username').textContent = username;
-    } 
-    
+        document.getElementById('Tanggal-lahir').textContent = date;
+        document.getElementById('useremail').textContent = useremail;
+    } else {
 
-    else {
         
         window.location.href = 'login.html';
     }
 }
 
+
 function logout() {
     localStorage.removeItem('username');
+    localStorage.removeItem('date');
+    localStorage.removeItem('useremail');
     window.location.href = 'login.html';
 }
 
@@ -60,4 +66,4 @@ if (window.location.pathname.endsWith('main.html')) {
     showProfilePage();
 }
 
-// to do lis //
+
