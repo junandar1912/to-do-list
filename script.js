@@ -61,9 +61,54 @@ function logout() {
     window.location.href = 'login.html';
 }
 
-// menampilkan profil //
+
 if (window.location.pathname.endsWith('main.html')) {
     showProfilePage();
 }
 
 
+//todo list//
+
+
+document.getElementById('addbtn').addEventListener('click', addTask);
+
+        function addTask() {
+            const catatan = document.getElementById('catatan').value;
+            const Tanggal = document.getElementById('Tanggal').value;
+            const priority = document.getElementById('priority-select').value;
+
+            if (catatan === '' || Tanggal === '') {
+                alert('tolong masukan sesuatu');
+                return;
+            }
+
+            const li = document.createElement('li');
+            li.innerHTML = `
+             <input type= "checkbox" class="cek">
+             <span class="task">${catatan}</span>
+             <span class="date">${Tanggal}</span>
+             <span class="priority">${priority}</span>
+             <button class="edit">Edit</button>
+             <button class="delete">Delete</button>
+            `;
+
+            document.getElementById('draft').appendChild(li);
+
+            document.getElementById('catatan').value = '';
+            document.getElementById('Tanggal').value = '';
+
+            li.querySelector('.delete').addEventListener('click', () => {
+                li.remove();
+            });
+
+            li.querySelector('.edit').addEventListener('click', () => {
+                document.getElementById('catatan').value = catatan;
+                document.getElementById('Tanggal').value = Tanggal;
+                document.getElementById('priority-select').value = priority;
+                li.remove();
+                });
+
+            
+        }
+
+        

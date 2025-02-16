@@ -7,14 +7,26 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div id="profile-page">
-        <h2>Profile</h2>
-        <p>Username: <span id="profile-username"></span></p>
-        <p>Tanggal-lahir: <span id="Tanggal-lahir"></span></p>
-        <p>Email: <span id="useremail"></span></p>
-        <button onclick="logout()">Logout</button>
-    </div>
-
+    <main>
+        <div id="profile-page">
+            <h2>Profile</h2>
+            <p>Username: <span id="profile-username"></span></p>
+            <p>Tanggal-lahir: <span id="Tanggal-lahir"></span></p>
+            <p>Email: <span id="useremail"></span></p>
+            <button onclick="logout()">Logout</button>
+        </div>
+        <div class="add-todo">
+            <input type="text" id="catatan" name="catatan" required>
+            <input type="date" id="Tanggal" name="Tanggal" required>
+           <select id="priority-select">
+                <option name="low" id="low">low priority</option>
+                <option name="medium" id="medium">medium priority</option>
+                <option name="height" id="height">height priority</option>
+            </select>
+            <button id="addbtn">add</button>
+        </div>
+        <ul class="draft" id="draft"></ul>
+    </main>
     <script src="script.js"></script>
 </body>
 </html>
